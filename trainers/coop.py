@@ -295,31 +295,34 @@ class CoOp(TrainerX):
             print("Note that load_model() is skipped as no pretrained model is given")
             return
 
-        names = self.get_model_names()
+        self.register_model("RemoteCLIP")
+        self._models["RemoteCLIP"].load_state_dict(torch.load(directory))
 
-        # By default, the best model is loaded
-        model_file = "model-best.pth.tar"
+        # names = self.get_model_names()
 
-        if epoch is not None:
-            model_file = "model.pth.tar-" + str(epoch)
+        # # By default, the best model is loaded
+        # model_file = "model-best.pth.tar"
 
-        for name in names:
-            model_path = osp.join(directory, name, model_file)
+        # if epoch is not None:
+        #     model_file = "model.pth.tar-" + str(epoch)
 
-            if not osp.exists(model_path):
-                raise FileNotFoundError('Model not found at "{}"'.format(model_path))
+        # for name in names:
+        #     model_path = osp.join(directory, name, model_file)
 
-            checkpoint = load_checkpoint(model_path)
-            state_dict = checkpoint["state_dict"]
-            epoch = checkpoint["epoch"]
+        #     if not osp.exists(model_path):
+        #         raise FileNotFoundError('Model not found at "{}"'.format(model_path))
 
-            # Ignore fixed token vectors
-            if "token_prefix" in state_dict:
-                del state_dict["token_prefix"]
+        #     checkpoint = load_checkpoint(model_path)
+        #     state_dict = checkpoint["state_dict"]
+        #     epoch = checkpoint["epoch"]
 
-            if "token_suffix" in state_dict:
-                del state_dict["token_suffix"]
+        #     # Ignore fixed token vectors
+        #     if "token_prefix" in state_dict:
+        #         del state_dict["token_prefix"]
 
-            print("Loading weights to {} " 'from "{}" (epoch = {})'.format(name, model_path, epoch))
-            # set strict=False
-            self._models[name].load_state_dict(state_dict, strict=False)
+        #     if "token_suffix" in state_dict:
+        #         del state_dict["token_suffix"]
+
+        #     print("Loading weights to {} " 'from "{}" (epoch = {})'.format(name, model_path, epoch))
+        #     # set strict=False
+        #     self._models[name].load_state_dict(state_dict, strict=False)
