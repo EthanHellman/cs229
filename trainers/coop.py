@@ -297,6 +297,7 @@ class CoOp(TrainerX):
 
         self.register_model("RemoteCLIP")
         self._models["RemoteCLIP"].load_state_dict(torch.load(directory))
+        print("Model should be LOADED")
 
         # names = self.get_model_names()
 
