@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # custom config
-DATA=/path/to/datasets
+DATA="/Users/rodrinieto/Documents/School/Coterm/Fall/CS 229/Project/Source Code/cs229/data"
 TRAINER=CoOp
 
 DATASET=$1
