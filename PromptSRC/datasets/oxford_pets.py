@@ -3,6 +3,7 @@ import pickle
 import math
 import random
 from collections import defaultdict
+import pdb
 
 from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 from dassl.utils import read_json, write_json, mkdir_if_missing
@@ -175,6 +176,7 @@ class OxfordPets(DatasetBase):
             for item in dataset:
                 if item.label not in selected:
                     continue
+                # pdb.set_trace()
                 item_new = Datum(
                     impath=item.impath,
                     label=relabeler[item.label],

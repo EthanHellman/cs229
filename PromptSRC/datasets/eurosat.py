@@ -1,5 +1,6 @@
 import os
 import pickle
+import pdb
 
 from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 from dassl.utils import mkdir_if_missing
@@ -27,13 +28,14 @@ class EuroSAT(DatasetBase):
     dataset_dir = "eurosat"
 
     def __init__(self, cfg):
+        # pdb.set_trace()
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))
         self.dataset_dir = os.path.join(root, self.dataset_dir)
         self.image_dir = os.path.join(self.dataset_dir, "2750")
         self.split_path = os.path.join(self.dataset_dir, "split_zhou_EuroSAT.json")
         self.split_fewshot_dir = os.path.join(self.dataset_dir, "split_fewshot")
         mkdir_if_missing(self.split_fewshot_dir)
-
+        # hasta aqui bien
         if os.path.exists(self.split_path):
             train, val, test = OxfordPets.read_split(self.split_path, self.image_dir)
         else:
@@ -47,6 +49,7 @@ class EuroSAT(DatasetBase):
             
             if os.path.exists(preprocessed):
                 print(f"Loading preprocessed few-shot data from {preprocessed}")
+                # aqui es donde se occure
                 with open(preprocessed, "rb") as file:
                     data = pickle.load(file)
                     train, val = data["train"], data["val"]
