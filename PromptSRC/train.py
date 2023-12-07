@@ -11,6 +11,7 @@ import datasets.oxford_flowers
 import datasets.fgvc_aircraft
 import datasets.dtd
 import datasets.eurosat
+import datasets.resisc45
 import datasets.stanford_cars
 import datasets.food101
 import datasets.sun397

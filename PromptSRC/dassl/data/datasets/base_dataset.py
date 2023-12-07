@@ -5,9 +5,9 @@ import tarfile
 import zipfile
 from collections import defaultdict
 import gdown
+import pdb
 
 from dassl.utils import check_isfile
-
 
 class Datum:
     """Data instance which defines the basic attributes.
@@ -21,6 +21,7 @@ class Datum:
 
     def __init__(self, impath="", label=0, domain=0, classname=""):
         assert isinstance(impath, str)
+        # pdb.set_trace()
         assert check_isfile(impath)
 
         self._impath = impath

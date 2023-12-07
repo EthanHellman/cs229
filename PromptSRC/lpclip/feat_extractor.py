@@ -10,6 +10,7 @@ from datasets.oxford_flowers import OxfordFlowers
 from datasets.fgvc_aircraft import FGVCAircraft
 from datasets.dtd import DescribableTextures
 from datasets.eurosat import EuroSAT
+from datasets.resisc45 import Resisc45
 from datasets.stanford_cars import StanfordCars
 from datasets.food101 import Food101
 from datasets.sun397 import SUN397
