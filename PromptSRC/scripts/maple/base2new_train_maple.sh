@@ -9,7 +9,7 @@ TRAINER=MaPLe
 DATASET=$1
 SEED=$2
 
-CFG=vit_b16_c2_ep5_batch4_2ctx
+CFG=vit_b16_c2_ep20_batch4_4+4ctx
 SHOTS=16
 
 
